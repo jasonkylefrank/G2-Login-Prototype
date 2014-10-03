@@ -94,6 +94,11 @@ body.Light #mainWrapper {
     background: rgba(255,255,255, .2);
 }
 
+body.Blue #mainWrapper {
+    background: rgba(0,191,255, .4);
+    /*background: #00bfff;*/
+}
+
 
 .MenuButton
 {
@@ -120,6 +125,7 @@ body.Light #mainWrapper {
     float: right;
     opacity: .6;
     */
+    opacity: .6;
     position: absolute;
     width: 195px;
     right: -195px;
@@ -133,19 +139,18 @@ body.Light #mainWrapper {
     padding-left: 15px;
     background-color: rgba(0,0,0,.6);
     font-size: .9rem;
-    /* I probably need to move these color options to a different rule which relies on the applied theme 
-       unless this stuff gets put into a sidebar menu.  */
+
     color: #dfdfdf;
     -moz-transition: all .3s;
     -o-transition: all .3s;
     -webkit-transition: all .3s;
     transition: all .3s;
 }
-/*
+
 #uiOptions:hover {
     opacity: 1.0;
 }
-*/
+
 
 #uiOptions.Shown
 {
@@ -184,6 +189,7 @@ body.Light #mainWrapper {
 
 #uiOptions li {
     list-style-type: none;
+    margin-bottom: 25px;
 }
 
 .uiOptionLabel {
@@ -256,14 +262,18 @@ body.Light #mainWrapper {
     opacity: 0.65;
 }
 
-body.Dark .dimmed {
+body.Dark .dimmed, body.Blue .dimmed {
     background: #000;
 }
 
 body.Light .dimmed {
     background: #fff;
 }
-
+/*
+body.Blue .dimmed {
+    background: #0099cc;
+}
+*/
 
 #DimmedBG {
     z-index: -50;
@@ -308,6 +318,11 @@ body.Dark input {
 
 body.Light input {
     color:black;
+}
+
+body.Blue input {
+    color: white;
+    background-color: rgba(255,255,255, .3);
 }
 
 #UsernameInput {
@@ -470,4 +485,13 @@ body.Light input {
 
 :focus:-ms-input-placeholder {  
    opacity: .3;
+}
+
+
+.optionSeparator {
+    width: 85%;
+    border-color: rgba(255,255,255,.3);
+    margin-left: 0;
+    margin-top: 45px;
+    opacity: 0;
 }

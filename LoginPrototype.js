@@ -32,7 +32,7 @@ $(document).ready(function (e) {
     });
 
     // Open/Close the Options Menu
-    $(document).on('click', '.MenuButton, #closeUIOptionsButton', function (e) {
+    $(document).on('click', '.MenuButton, #closeUIOptionsButton, #uiOptions .Button', function (e) {
         $('#uiOptions').toggleClass('Shown');
         $('.MenuButton').toggleClass('MenuShown');
     });
