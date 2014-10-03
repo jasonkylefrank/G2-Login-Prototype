@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login Prototype</title>
+
+    <link rel="stylesheet" href="LoginPrototype.css" type="text/css" />
+</head>
+<body class="Dark">    
+
+    <video id="bgvid" autoplay="autoplay" loop="loop"> <!-- poster="images/ConferenceTable.jpg" -->
+        <!--<source src="polina.webm" type="video/webm">-->
+        <source src="images/C5_Innovator_cutup2-comp15fps2.mp4" type="video/mp4" />
+    </video>
+
+    <div id="DimmedBG" class="dimmed"></div>
+
+    <div id="mainWrapper">
+        <img class="Logo NewLogo svg" src="images/G2LogoNew2.svg" />
+
+        <img class="Logo OldLogo svg" src="images/g2.logo-blue.svg" />
+
+        <!--
+        <object id="logo" type="image/svg+xml" data="images/G2LogoNew1.svg" >
+             Put text here for fallback image in CSS 
+        </object>
+        -->
+
+        <form>
+            <input id="UsernameInput" placeholder="User Id" name="UsernameInput" type="text" />
+
+            <input id="PasswordInput" placeholder="Pin + Passcode" name="PasswordInput" type="text" />
+
+            <span id="loginButton" class="Button">
+                Log In
+            </span>
+
+
+            <div class="SuccessMessage Message" style="display:none;">
+                Yep, you're in!
+            </div>
+        </form>
+
+        <div>
+
+        </div>
+    </div>
+
+    <img class="MenuButton Button svg" src="images/menu-blue.svg" />
+
+    <aside id="uiOptions">
+        <div id="uiOptionsHeaderBlock">
+            <h4>Options</h4>
+            <span id="closeUIOptionsButton" class="Button">
+                <img class="svg" src="images/close-sidebar.svg" />
+            </span>
+        </div>
+        <ul>
+            <li>
+                <label class="uiOptionLabel">Color Scheme</label>
+                <span id="colorSchemeButtons" class="RadioButtonToggleSet">
+                    <span class="Selected Button" data-color-scheme-id="1">1</span><span class="Button" data-color-scheme-id="2">2</span><span class="Button" data-color-scheme-id="3">3</span>
+                </span>
+            </li>
+        </ul>
+    </aside>
+    
+
+    <script type="text/javascript" src="Scripts/Libraries/jQuery/jquery.min.js"></script>
+    <script type="text/javascript" src="LoginPrototype.js"></script>    
+</body>
+</html>
