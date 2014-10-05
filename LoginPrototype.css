@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;    
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* Helpful info: http://demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video  */
@@ -257,7 +257,7 @@ body.Blue #mainWrapper {
     position: absolute;
     left: 0;
     top: 0;
-    width: 101%;
+    width: 100%;
     height: 100%;
     
     /* Normally I think the opacity would probably be applied with JavaScript, so we could show a bright
@@ -280,6 +280,7 @@ body.Blue .dimmed {
 
 #DimmedBG {
     z-index: -50;
+    position: fixed;
 }
 
 
@@ -351,7 +352,7 @@ body.Blue input {
     display: inline-block;
     padding: 5px 10px;
     margin-top: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     margin-right: 3px;
     border: 2px solid #444; /* Disabled color */
     /*background-color: #0099cc;*/
@@ -504,7 +505,8 @@ body.Blue input {
 
 ul#auxInfoButtons {
     padding: 0;
-    margin-top: 0;
+    /*margin-top: 0;*/
+    margin-bottom: 0;
     float: right;
     color:white;
 }
@@ -538,6 +540,7 @@ ul#auxInfoButtons {
     clear: both;
     margin-top: 10px;
     position: relative;
+    font-size: .85rem;
 }
 
 body.Dark #auxInfo, body.Blue #auxInfo {
@@ -555,20 +558,78 @@ a {
 #auxInfo > .auxInfoItem
 {
     position: absolute;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    border: 2px solid #0099cc;
     top: -15px;
     left: 0;
+    height: 0;
     opacity: 0;
-
     -moz-transition: all .3s;
     -o-transition: all .3s;
     -webkit-transition: all .3s;
     transition: all .3s;
 }
 
+body.Dark .auxInfoItem {
+    background: rgba(0,0,0,.6);
+}
+
+body.Light .auxInfoItem {
+    background: rgba(255,255,255,.6);
+}
+
 #auxInfo > .auxInfoItem.Selected {
     opacity: 1.0;
     top: 0;
+    /*height: 100%;*/
 }
+/* "pointer" triangle */
+.auxInfoItem:before {
+    position: absolute;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #0099cc;    
+    
+    top: -15px;
+}
+/* Position the pointer triangle horizontally to point to the respective button */
+.auxInfoItem#security:before
+{
+    right: -3px;
+}
+.auxInfoItem#newUser:before
+{
+    right: 26px;
+}
+.auxInfoItem#help:before
+{
+    right: 57px;
+}
+
+.auxInfoItem h2 {
+    float: left;
+} 
+.auxInfoItem .CloseAuxInfoButton {
+    float: right;   
+    margin-top: 18px;
+}
+.auxInfoItem .CloseAuxInfoButton .ButtonImage {
+    height: 15px;
+}
+.auxInfoItem .CloseAuxInfoButton + * {
+    clear: both;
+}
+
 
 
 #auxInfo ul {

@@ -57,6 +57,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\C5_Innovator_cutup2-comp15fps2.mp4" />
+    <Content Include="images\close-sidebar.svg" />
+    <Content Include="images\ConferenceTable.JPG" />
+    <Content Include="images\g2.logo-blue.svg" />
+    <Content Include="images\G2LogoNew1.svg" />
+    <Content Include="images\G2LogoNew2.svg" />
+    <Content Include="images\lock-10-blue.svg" />
+    <Content Include="images\lock-10-white.svg" />
+    <Content Include="images\lock-10.svg" />
+    <Content Include="images\menu-blue.svg" />
+    <Content Include="images\Plus-blue.svg" />
+    <Content Include="images\Plus.svg" />
+    <Content Include="images\user1-blue.svg" />
+    <Content Include="images\user1-white.svg" />
+    <Content Include="images\user1.svg" />
     <Content Include="LoginPrototype.css" />
     <Content Include="LoginPrototype.html" />
     <Content Include="LoginPrototype.js" />
