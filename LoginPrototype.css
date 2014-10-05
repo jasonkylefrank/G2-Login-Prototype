@@ -69,12 +69,12 @@ body.Loaded video#bgvid {
     display: inline-block;
     padding-right: 18px;
     float: left;
+    width: 450px; /* explicit width to keep aux info paragraphs from widening this container */
 
     position: relative;
     top: -25px;
     opacity: 0.0;    
     
-
     -moz-transition: all 1.0s;
     -o-transition: all 1.0s;
     -webkit-transition: all 1.0s;
@@ -99,6 +99,9 @@ body.Blue #mainWrapper {
     /*background: #00bfff;*/
 }
 
+#formAndInfoWrapper {
+    margin-left: 15px;
+}
 
 .MenuButton
 {
@@ -282,12 +285,25 @@ body.Blue .dimmed {
 
 form {
     margin-top: 20px;
-    margin-left: 15px;
+}
+
+form:after {
+    /* Clearfix trick to keep floated elements from spilling out of this container.
+       See: http://stackoverflow.com/a/11597829/718325 */
+    content: " ";
+    display: block; 
+    height: 0; 
+    clear: both;
 }
 
 input
 {
     /*background-color: rgba(255,255,255,.3);*/
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    width: 100%;
     border-width: 1px;
     border-color: rgba(255,255,255,.1);
     background-color: rgba(0,155,204, .3);
@@ -295,17 +311,13 @@ input
     background-color: rgba(57,205,255, .3);
     font-size: 2em;
     display: block;
-
     background-size: 1.0em;
     background-repeat: no-repeat;
     background-position-y: center;
-    
     padding-left: 42px;
     padding-top: 5px;
     padding-bottom: 5px;
-
     margin-bottom: 20px;
-
     -moz-transition: all .3s;
     -o-transition: all .3s;
     -webkit-transition: all .3s;
@@ -337,21 +349,21 @@ body.Blue input {
 #loginButton
 {
     display: inline-block;
-    /*box-sizing: border-box;*/
     padding: 5px 10px;
-    /*width: 400px;
-    right: 0; */
+    margin-top: 0px;
     margin-bottom: 20px;
-    /*margin-left: 35px;*/
     margin-right: 3px;
-    border: 2px solid #0099cc;
-    background-color: #0099cc;
+    border: 2px solid #444; /* Disabled color */
+    /*background-color: #0099cc;*/
+    background-color: #666; /* Disabled appearance */
     color: white;
     font-size: 2em;
+    cursor: default;
     position: relative;
-    float: right;
-    margin-top: -85px;
-    opacity: 0;
+    float: left;
+    /*margin-top: -85px;*/
+    
+    opacity: .5;
 
     -moz-transition: opacity .75s margin .75s, background-color .25s;
     -o-transition: opacity .75s margin .75s, background-color .25s;
@@ -359,16 +371,18 @@ body.Blue input {
     transition: opacity .75s, margin .75s, background-color .25s;
 }
 
-#loginButton.Shown {
+#loginButton.Enabled {
     opacity: 1.0;
-    margin-top: 0px;
+    background-color: #0099cc;
+    border-color: #0099cc;
 }
 
-#loginButton:hover {
+#loginButton.Enabled:hover {
     background-color: transparent;
+    cursor: pointer;
 }
 
-    #loginButton:active
+    #loginButton.Enabled:active
     {
         background-color: rgba(35, 193, 246, 0.5);
         -moz-transition: all 0s;
@@ -417,7 +431,7 @@ body.Blue input {
 }
 
 
-
+/*#region --- Textbox Watermark/Placeholderm text --- */
 
 /* Placeholder text when the input does not have focus*/
 ::-webkit-input-placeholder {
@@ -440,15 +454,12 @@ body.Blue input {
 .Dark::-webkit-input-placeholder {
    color: #aaa;
 }
-
 .Dark:-moz-placeholder { /* Firefox 18- */
    color: #aaa;
 }
-
 .Dark::-moz-placeholder {  /* Firefox 19+ */
    color: #aaa;
 }
-
 .Dark:-ms-input-placeholder {  
    color: #aaa;
 }
@@ -457,15 +468,12 @@ body.Blue input {
 .Light ::-webkit-input-placeholder {
    color: #555;
 }
-
 .Light :-moz-placeholder { /* Firefox 18- */
    color: #555;
 }
-
 .Light ::-moz-placeholder {  /* Firefox 19+ */
    color: #555;
 }
-
 .Light :-ms-input-placeholder {  
    color: #555;
 }
@@ -474,19 +482,16 @@ body.Blue input {
 :focus::-webkit-input-placeholder {
    opacity: .3;
 }
-
 :focus:-moz-placeholder { /* Firefox 18- */
    opacity: .3;
 }
-
 :focus::-moz-placeholder {  /* Firefox 19+ */
    opacity: .3;
 }
-
 :focus:-ms-input-placeholder {  
    opacity: .3;
 }
-
+/*#endregion --- end Textbox Placeholder styles --- */
 
 .optionSeparator {
     width: 85%;
@@ -495,3 +500,84 @@ body.Blue input {
     margin-top: 45px;
     opacity: 0;
 }
+
+
+ul#auxInfoButtons {
+    padding: 0;
+    margin-top: 0;
+    float: right;
+    color:white;
+}
+
+    ul#auxInfoButtons li
+    {
+        list-style-type: none;
+        display: inline-block;
+        padding: 3px;
+        cursor: pointer;
+
+        opacity: .6;
+
+        -moz-transition: all .25s;
+        -o-transition: all .25s;
+        -webkit-transition: all .25s;
+        transition: all .25s;
+    }
+
+        ul#auxInfoButtons li:hover, ul#auxInfoButtons li.Selected
+        {
+            opacity: 1.0;
+        }
+
+    ul#auxInfoButtons .Button {
+        height: 20px;
+        vertical-align: middle;
+    }
+
+#auxInfo {
+    clear: both;
+    margin-top: 10px;
+    position: relative;
+}
+
+body.Dark #auxInfo, body.Blue #auxInfo {
+    color: #bbb;
+}
+
+body.Light #auxInfo {
+    color: #555;
+}
+
+a {
+    color: inherit;
+}
+
+#auxInfo > .auxInfoItem
+{
+    position: absolute;
+    top: -15px;
+    left: 0;
+    opacity: 0;
+
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+#auxInfo > .auxInfoItem.Selected {
+    opacity: 1.0;
+    top: 0;
+}
+
+
+#auxInfo ul {
+    padding-left: 0; 
+}
+
+#auxInfo li {
+    list-style-type: none;
+    margin-bottom: 7px;
+}
+
+

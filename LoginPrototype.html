@@ -24,24 +24,77 @@
              Put text here for fallback image in CSS 
         </object>
         -->
+        <div id="formAndInfoWrapper">
+            <form>
+                <input id="UsernameInput" placeholder="user@example.com" name="UsernameInput" type="text" />
 
-        <form>
-            <input id="UsernameInput" placeholder="User Id" name="UsernameInput" type="text" />
+                <input id="PasswordInput" placeholder="Pin + RSA Code" name="PasswordInput" type="text" />
 
-            <input id="PasswordInput" placeholder="Pin + Passcode" name="PasswordInput" type="text" />
+                <span id="loginButton" class="Button">
+                    Log In
+                </span>
 
-            <span id="loginButton" class="Button">
-                Log In
-            </span>
+                <ul id="auxInfoButtons">
+                    <li data-aux-info-id="help">
+                        <img class="Button" src="images/Question-blue.svg" />
+                    </li>
+                    <li data-aux-info-id="newUser">
+                        <img class="Button" src="images/Plus-blue.svg" />
+                    </li>
+                    <li data-aux-info-id="security">
+                        <img class="Button" src="images/Shield-blue.svg" />
+                    </li>
+                </ul>
 
 
-            <div class="SuccessMessage Message" style="display:none;">
-                Yep, you're in!
+                <div class="SuccessMessage Message" style="display:none;">
+                    Yep, you're in!
+                </div>
+
+            </form>
+
+            <div id="auxInfo">
+                <div id="help" class="auxInfoItem">
+                    <h2>Need Help?</h2>
+                    <ul>
+                        <li>
+                            Email: <a href="help@nnsa-server.ornl.gov">help@nnsa-server.ornl.gov</a>
+                        </li>
+                        <li>
+                            Phone: (865) 574-7911
+                        </li>
+                    </ul>
+                </div>
+                <div id="newUser" class="auxInfoItem">
+                    <h2>New User?</h2>
+                    <p>
+                        If you are a new user who would like access to this application...
+                        todo.........................
+                    </p>
+                </div>
+                <div id="security" class="auxInfoItem">
+                    <h2>Security Notice</h2>
+                    <p>
+                        This is a Federal computer system and is the property of the United States Government. It is for authorized use only. 
+                        <strong>Users (authorized or unauthorized) have no explicit or implicit expectation of privacy.</strong>
+                    </p>
+                    <p>
+                        Any or all uses of this system and all files on this system may be intercepted, monitored, recorded, copied, audited, 
+                        inspected, and disclosed to authorized site, Department of Energy, and law enforcement personnel, as well as authorized
+                        officials of other agencies, both domestic and foreign. <b>By using this system, the user consents to such interception, 
+                        monitoring, recording, copying, auditing, inspection, and disclosure at the discretion of authorized site or Department
+                        of Energy personnel.</b>
+                    </p>
+                    <p>
+                        <strong>
+                            Unauthorized or improper use of this system may result in administrative disciplinary action and civil and 
+                            criminal penalties. By continuing to use this system you indicate your awareness of and consent to these terms 
+                            and conditions of use. LOG OFF IMMEDIATELY if you do not agree to the conditions stated in this warning.
+                        </strong>
+                    </p>
+                </div>
+            
             </div>
-        </form>
-
-        <div>
-
         </div>
     </div>
 

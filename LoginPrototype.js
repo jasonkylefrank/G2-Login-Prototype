@@ -14,6 +14,21 @@ $(document).ready(function (e) {
     //    }
     //});
 
+
+    $(document).on('click', '#auxInfoButtons li', function (e) {
+        var $selectedElement = $(e.target);
+        // Get the parent LI in case a child element is the e.target. (for some reason child elements are also being targetted)
+        var $selectedLI = $selectedElement.closest('li');
+        // Change button appearance
+        $('#auxInfoButtons li').removeClass('Selected');
+        $selectedLI.addClass('Selected');
+        // Reveal content
+        $('#auxInfo > .auxInfoItem').removeClass('Selected');
+        var newSelectedContentId = '#' + $selectedLI.data('auxInfoId');
+        $(newSelectedContentId).addClass('Selected');
+
+    });
+
     // Color scheme switching
     $(document).on('click', '#colorSchemeButtons span', function (e) {
         
@@ -43,7 +58,7 @@ $(document).ready(function (e) {
         e.stopPropagation();
         
     });
-
+    // Enable/Disable Login button based on what has been typed in username/password fields
     $(document).on("keyup", "input", function (e) {
 
         var isUserNameAndPasswordValid = false;
@@ -54,7 +69,7 @@ $(document).ready(function (e) {
         if (validateEmail(userName) && password.length > 5)
             isUserNameAndPasswordValid = true;      
         
-        $('#loginButton').toggleClass('Shown', isUserNameAndPasswordValid);
+        $('#loginButton').toggleClass('Enabled', isUserNameAndPasswordValid);
         
     });
 
