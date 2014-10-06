@@ -18,34 +18,51 @@ $(document).ready(function (e) {
 
     // Open Auxillary Info
     $(document).on('click', '#auxInfoButtons li', function (e) {
+
+        /* Purpose: (1) If user clicked on an aux info button that is different than the currently-shown one,
+         *              hide the current one, show the new one, and make the clicked button appear "selected".
+         *          (2) If the user clicked on the same aux info button as the currently-shown one, hide all.        
+         */
         var $selectedElement = $(e.target);
         // Get the parent LI in case a child element is the e.target. (for some reason child elements are also being targetted)
         var $selectedLI = $selectedElement.closest('li');
-        // --- Change button appearance
-        $('#auxInfoButtons li').removeClass('Selected');
-        $selectedLI.addClass('Selected');
-        // --- Content: Hide previous one and reveal new one
+        
         // Make the current on the previous one
         $previousAuxInfoItem = $currentAuxInfoItem;
+        // Make the new one the "current" one        
+        $currentAuxInfoItem = $('#' + $selectedLI.data('auxInfoId'));
 
-        // Make the new one the "current" one
-        var newSelectedContentId = '#' + $selectedLI.data('auxInfoId');
-        $currentAuxInfoItem = $(newSelectedContentId);
+        // First hide all
+        closeAuxInfo();
 
-        if ($previousAuxInfoItem) {
-            $previousAuxInfoItem.removeClass('Selected');
+        // Was the clicked button a new aux info button, or the same as the currently-open aux info
+        var wasDifferentAuxInfoButtonClicked = !$previousAuxInfoItem || $previousAuxInfoItem.get(0) != $currentAuxInfoItem.get(0);
+
+        // If a different button than the current one was clicked, show the new stuff
+        if (wasDifferentAuxInfoButtonClicked) {
+            $currentAuxInfoItem.addClass('Selected');
+            // Change button appearance
+            $selectedLI.addClass('Selected');
         }
-        $currentAuxInfoItem.addClass('Selected');
+        // otherwise, the user has clicked the same button as before, so just reset state (we already hid things above)
+        else {
+            $currentAuxInfoItem = $previousAuxInfoItem = null;
+        }
     });
 
-    // Close Aux Info
+    // Handle Aux Info Close button clicks
     $(document).on('click', '.auxInfoItem .CloseAuxInfoButton', function (e) {
+        closeAuxInfo();
+        // Reset state
+        $currentAuxInfoItem = $previousAuxInfoItem = null;
+    });
+
+    var closeAuxInfo = function () {
         // Change button appearance
         $('#auxInfoButtons li').removeClass('Selected');
         // Hide content
         $('#auxInfo .auxInfoItem').removeClass('Selected');
-        $currentAuxInfoItem = $previousAuxInfoItem = null;
-    });
+    };
 
     // Color scheme switching
     $(document).on('click', '#colorSchemeButtons span', function (e) {
