@@ -50,7 +50,7 @@ body.Loaded video#bgvid {
 
 /* Dealing With Mobile */
 /*@media screen and (max-device-width: 800px) {
-    html { background: url(images/ConferenceTable.jpg) #000 no-repeat center center fixed; }
+    html { background: url(../images/ConferenceTable.jpg) #000 no-repeat center center fixed; }
     #bgvid { display: none; }
 }*/
 
@@ -339,11 +339,11 @@ body.Blue input {
 }
 
 #UsernameInput {
-    background-image: url(images/user1-blue.svg);
+    background-image: url(../images/user1-blue.svg);
 }
 
 #PasswordInput {
-    background-image: url(images/lock-10-blue.svg);
+    background-image: url(../images/lock-10-blue.svg);
 }
 
 

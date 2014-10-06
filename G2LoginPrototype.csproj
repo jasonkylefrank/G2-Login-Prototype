@@ -72,9 +72,9 @@
     <Content Include="images\user1-blue.svg" />
     <Content Include="images\user1-white.svg" />
     <Content Include="images\user1.svg" />
-    <Content Include="LoginPrototype.css" />
+    <Content Include="Styles\LoginPrototype.css" />
     <Content Include="LoginPrototype.html" />
-    <Content Include="LoginPrototype.js" />
+    <Content Include="Scripts\LoginPrototype.js" />
     <Content Include="Scripts\Libraries\jQuery\jquery.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
