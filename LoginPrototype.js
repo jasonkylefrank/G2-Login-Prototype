@@ -34,11 +34,7 @@ $(document).ready(function (e) {
 
         if ($previousAuxInfoItem) {
             $previousAuxInfoItem.removeClass('Selected');
-            // Need to set display none on the previous one after its opacity fades so that 
-            //  mouse events can pass through to other aux info items
-//            setTimeout(function () { $previousAuxInfoItem.css('display', 'none'); }, 500);
         }
-//        $currentAuxInfoItem.css('display', 'block');
         $currentAuxInfoItem.addClass('Selected');
     });
 

@@ -555,7 +555,7 @@ a {
     color: inherit;
 }
 
-#auxInfo > .auxInfoItem
+.auxInfoItem
 {
     position: absolute;
     padding: 0 15px;
@@ -566,7 +566,8 @@ a {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 
-    border: 2px solid #0099cc;
+    border-top: 4px solid #0099cc;
+    background: transparent;
     top: -15px;
     left: 0;
     height: 0;
@@ -577,20 +578,23 @@ a {
     transition: all .3s;
 }
 
-body.Dark .auxInfoItem {
+.auxInfoItem.Selected {
+    opacity: 1.0;
+    top: 0;
+    height: auto;
+}
+
+body.Dark .auxInfoItem.Selected, body.Blue .auxInfoItem.Selected {
     background: rgba(0,0,0,.6);
 }
 
-body.Light .auxInfoItem {
+body.Light .auxInfoItem.Selected {
     background: rgba(255,255,255,.6);
 }
 
-#auxInfo > .auxInfoItem.Selected {
-    opacity: 1.0;
-    top: 0;
-    /*height: 100%;*/
-}
-/* "pointer" triangle */
+
+
+/*#region --- "pointer" triangle --- */
 .auxInfoItem:before {
     position: absolute;
     content: "";
@@ -605,16 +609,17 @@ body.Light .auxInfoItem {
 /* Position the pointer triangle horizontally to point to the respective button */
 .auxInfoItem#security:before
 {
-    right: -3px;
+    right: -1px;
 }
 .auxInfoItem#newUser:before
 {
-    right: 26px;
+    right: 28px;
 }
 .auxInfoItem#help:before
 {
-    right: 57px;
+    right: 59px;
 }
+/*#endregion --- end Aux Info Item "pointer" triangle ---*/
 
 .auxInfoItem h2 {
     float: left;
@@ -642,3 +647,10 @@ body.Light .auxInfoItem {
 }
 
 
+.InlineImage {
+    height: 11px;
+}
+
+.SpacedLI {
+    margin-top: 15px;
+}
