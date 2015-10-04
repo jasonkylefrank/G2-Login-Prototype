@@ -16,7 +16,7 @@ $(document).ready(function (e) {
     //    }
     //});
 
-    // Open Auxillary Info
+    // Open or Close Auxillary Info
     $(document).on('click', '#auxInfoButtons li', function (e) {
 
         /* Purpose: (1) If user clicked on an aux info button that is different than the currently-shown one,
@@ -122,8 +122,6 @@ $(document).ready(function (e) {
     });
 
 
-    $('body').addClass('Loaded');
-
 
 
 
@@ -162,4 +160,7 @@ $(document).ready(function (e) {
 
     });
     */
+
+
+    $('body').addClass('Loaded');
 });

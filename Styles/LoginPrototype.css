@@ -5,9 +5,26 @@ body {
     overflow-x: hidden;
 }
 
-/* Helpful info: http://demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video  */
+/*#region --- Show/Hide different img elements based on Color Scheme ---*/
+body.Blue img:not(.MenuButton) { /* for some reason I couldn't add ":not(#uiOptions img)" here as well, so I added it below */
+    display: none;
+}
+
+body.Dark img, body.Light img, body.Blue #uiOptions img {
+    display: inline-block;
+}
+
+body.Dark  img.BlueBGScheme, 
+body.Light img.BlueBGScheme {
+    display: none;
+}
+body.Blue img.BlueBGScheme {
+    display: inline-block;
+}
+/*#endregion --- end Show/Hide different img elements based on Color Scheme ---*/
 
 
+/* Video BG Helpful info: http://demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video  */
 video#bgvid
 {
     position: fixed;
@@ -103,6 +120,7 @@ body.Blue #mainWrapper {
     margin-left: 15px;
 }
 
+/*#region --- Options Menu --- */
 .MenuButton
 {
     position: absolute;
@@ -217,7 +235,9 @@ body.Blue #mainWrapper {
     background-color: rgba(57,205,255, .3);
     opacity: 1.0;
 }
+/*#endregion --- Options Menu --- */
 
+/*#region --- Logos --- */
 .Logo
 {
     -moz-transition: all .3s;
@@ -234,19 +254,21 @@ body.Blue #mainWrapper {
     margin-left: 14px;
 }
 
-.NewLogo {
-    display: none;
+#newLogo {
+    /*display: none;*/
 }
 
 .NewLogo.LogoSizeBig {
     margin-left: -6px;
-    height: 319px;
+    height: 303px;
 }
 
 .OldLogo.LogoSizeBig {    
     height: 368px;
 }
+/*#endregion --- end Logos --- */
 
+/*#region --- "Dimmed" elements --- */
 .dimmed
 {
     -moz-transition: all .4s;
@@ -282,7 +304,7 @@ body.Blue .dimmed {
     z-index: -50;
     position: fixed;
 }
-
+/*#endregion --- end "Dimmed" elements --- */
 
 form {
     margin-top: 20px;
@@ -341,9 +363,16 @@ body.Blue input {
 #UsernameInput {
     background-image: url(../images/user1-blue.svg);
 }
+body.Blue #UsernameInput {
+    background-image: url(../images/user1-light.svg);
+}
 
 #PasswordInput {
     background-image: url(../images/lock-10-blue.svg);
+}
+
+body.Blue #PasswordInput {
+    background-image: url(../images/lock-10-light.svg);
 }
 
 
@@ -392,31 +421,11 @@ body.Blue input {
         transition: all 0s;
     }
 
-
-    /*
-    #loginButton:before
-    {
-        content: "";
-        width: 25px;
-
-        background-color: #0099cc;
-        border: 2px solid #0099cc;
-
-        position: absolute;
-
-        -moz-transform: skewX(-30deg);
-        -ms-transform: skewX(-30deg);
-        -o-transform: skewX(-30deg);
-        -webkit-transform: skewX(-30deg);
-        transform: skewX(-30deg);
-
-        top: -2px;
-        bottom: -2px;
-        left: -17px;
-        z-index: -1;
-
-    }
-    */
+body.Blue #loginButton.Enabled {
+    background-color: white;
+    border-color: white;
+    color: #0099cc;
+}
     
 
 .Message {
@@ -502,7 +511,7 @@ body.Blue input {
     opacity: 0;
 }
 
-
+/*#region --- Auxillary Info elements --- */
 ul#auxInfoButtons {
     padding: 0;
     /*margin-top: 0;*/
@@ -543,12 +552,16 @@ ul#auxInfoButtons {
     font-size: .85rem;
 }
 
-body.Dark #auxInfo, body.Blue #auxInfo {
+body.Dark #auxInfo {
     color: #bbb;
 }
 
 body.Light #auxInfo {
     color: #555;
+}
+
+body.Blue #auxInfo {
+    color: #0099cc;
 }
 
 a {
@@ -578,6 +591,10 @@ a {
     transition: all .3s;
 }
 
+body.Blue .auxInfoItem {
+    border-top-color: white;
+}
+
 .auxInfoItem.Selected {
     opacity: 1.0;
     top: 0;
@@ -593,7 +610,6 @@ body.Light .auxInfoItem.Selected {
 }
 
 
-
 /*#region --- "pointer" triangle --- */
 .auxInfoItem:before {
     position: absolute;
@@ -605,6 +621,9 @@ body.Light .auxInfoItem.Selected {
     border-bottom: 15px solid #0099cc;    
     
     top: -15px;
+}
+body.Blue .auxInfoItem:before {
+    border-bottom-color: white;
 }
 /* Position the pointer triangle horizontally to point to the respective button */
 .auxInfoItem#security:before
@@ -645,6 +664,7 @@ body.Light .auxInfoItem.Selected {
     list-style-type: none;
     margin-bottom: 7px;
 }
+/*#endregion --- end Auxillary Info elements --- */
 
 
 .InlineImage {
