@@ -1,0 +1,21 @@
+{
+  "name": "g2-login-prototype",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jasonkylefrank/G2-Login-Prototype",
+  "description": "Video background login page prototype.",
+  "main": "index.html",
+  "authors": [
+    "Jason K. Frank"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

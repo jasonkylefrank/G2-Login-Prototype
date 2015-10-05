@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" href="Styles/LoginPrototype.css" type="text/css" />
 </head>
-<body class="Dark">    
+<body class="Dark">
 
     <video id="bgvid" autoplay="autoplay" loop="loop"> <!-- poster="images/ConferenceTable.jpg" -->
         <!--<source src="polina.webm" type="video/webm">-->
@@ -25,7 +25,7 @@
 
         <!--
         <object id="logo" type="image/svg+xml" data="images/G2LogoNew1.svg" >
-             Put text here for fallback image in CSS 
+             Put text here for fallback image in CSS
         </object>
         -->
         <div id="formAndInfoWrapper">
@@ -74,16 +74,16 @@
                         <li>
                             Phone: (555) 555-5555
                         </li>
-                        <li class="SpacedLI">                            
-                            Would you like to <strong>request access</strong> to this application?  If so, 
+                        <li class="SpacedLI">
+                            Would you like to <strong>request access</strong> to this application?  If so,
                             click on the <img class="InlineImage" src="images/Plus-blue.svg" />
-                            <img class="InlineImage BlueBGScheme" src="images/Plus-light.svg" /> button 
+                            <img class="InlineImage BlueBGScheme" src="images/Plus-light.svg" /> button
                             above.
                         </li>
-                        <li class="SpacedLI">                            
-                            Please read our <strong>security notice</strong> by clicking the 
-                             <img class="InlineImage" src="images/Shield-blue.svg" /> 
-                             <img class="InlineImage BlueBGScheme" src="images/Shield-light.svg" /> button 
+                        <li class="SpacedLI">
+                            Please read our <strong>security notice</strong> by clicking the
+                             <img class="InlineImage" src="images/Shield-blue.svg" />
+                             <img class="InlineImage BlueBGScheme" src="images/Shield-light.svg" /> button
                             above.
                         </li>
                     </ul>
@@ -96,7 +96,7 @@
                     </span>
                     <p>
                         If you do not yet have access to this application, you may request access
-                        through the NNCAMS system...                        
+                        through the NNCAMS system...
                     </p>
                 </div>
                 <div id="security" class="auxInfoItem">
@@ -106,25 +106,25 @@
                         <img class="ButtonImage svg BlueBGScheme" src="images/close-sidebar-blue.svg" />
                     </span>
                     <p>
-                        This is a Federal computer system and is the property of the United States Government. It is for authorized use only. 
+                        This is a Federal computer system and is the property of the United States Government. It is for authorized use only.
                         <strong>Users (authorized or unauthorized) have no explicit or implicit expectation of privacy.</strong>
                     </p>
                     <p>
-                        Any or all uses of this system and all files on this system may be intercepted, monitored, recorded, copied, audited, 
+                        Any or all uses of this system and all files on this system may be intercepted, monitored, recorded, copied, audited,
                         inspected, and disclosed to authorized site, Department of Energy, and law enforcement personnel, as well as authorized
-                        officials of other agencies, both domestic and foreign. <b>By using this system, the user consents to such interception, 
+                        officials of other agencies, both domestic and foreign. <b>By using this system, the user consents to such interception,
                         monitoring, recording, copying, auditing, inspection, and disclosure at the discretion of authorized site or Department
                         of Energy personnel.</b>
                     </p>
                     <p>
                         <strong>
-                            Unauthorized or improper use of this system may result in administrative disciplinary action and civil and 
-                            criminal penalties. By continuing to use this system you indicate your awareness of and consent to these terms 
+                            Unauthorized or improper use of this system may result in administrative disciplinary action and civil and
+                            criminal penalties. By continuing to use this system you indicate your awareness of and consent to these terms
                             and conditions of use. LOG OFF IMMEDIATELY if you do not agree to the conditions stated in this warning.
                         </strong>
                     </p>
                 </div>
-            
+
             </div>
         </div>
     </div>
@@ -156,20 +156,25 @@
                 <span id="Logo" class="RadioButtonToggleSet">
                     <span class="Selected Button" data-logo-id="1">1</span><span class="Button" data-logo-id="2">2</span>
                 </span>
-            </li>            
+            </li>
         </ul>
 
         <hr class="optionSeparator" />
-        
+
         <h4 class="uiOptionLabel">Inspiration</h4>
         <ul>
             <li>todo...</li>
         </ul>
     </aside>
-    
 
-    
+
+
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="Scripts/LoginPrototype.js"></script>    
+  <!-- fallback to local if the CDN isn't available -->
+  <script>if (typeof jQuery === 'undefined') {
+            document.write(unescape('%3Cscript%20src%3D%22/bower_components/jquery/dist/jquery.min.js%22%3E%3C/script%3E'));
+          }
+  </script>
+    <script type="text/javascript" src="Scripts/LoginPrototype.js"></script>
 </body>
 </html>

@@ -1,5 +1,8 @@
 obj
 bin
-jQuery
+
 *.suo
 /Properties/AssemblyInfo.cs
+
+node_modules
+/bower_components/
