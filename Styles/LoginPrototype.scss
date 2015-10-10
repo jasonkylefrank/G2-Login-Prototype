@@ -351,45 +351,50 @@ body.Blue #PasswordInput {
 }
 
 
-#loginButton
+.login-button
 {
     display: inline-block;
     padding: 5px 10px;
     margin-top: 0px;
     margin-bottom: 5px;
     margin-right: 3px;
-    border: 2px solid #444; /* Disabled color */
-    /*background-color: #0099cc;*/
-    background-color: #666; /* Disabled appearance */
+    border: 2px solid #444;
+
+    opacity: 1.0;
+    background-color: #0099cc;
+    border-color: #0099cc;
+
     color: white;
     font-size: 2em;
     cursor: default;
     position: relative;
     float: left;
 
-    opacity: .5;
-
     transition: opacity .75s, margin .75s, background-color .25s;
 }
 
-#loginButton.Enabled {
-    opacity: 1.0;
-    background-color: #0099cc;
-    border-color: #0099cc;
+.login-button.disabled {
+  border-color: #444;  /* Disabled color */
+  background-color: #666; /* Disabled appearance */
+  opacity: .5;
 }
 
-  #loginButton.Enabled:hover {
+.login-button.active-message {
+  opacity: .2;
+}
+
+  .login-button:not(.disabled):not(.active-message):hover {
       background-color: transparent;
       cursor: pointer;
   }
 
-  #loginButton.Enabled:active
+  .login-button:active
   {
       background-color: rgba(35, 193, 246, 0.5);
       transition: all 0s;
   }
 
-body.Blue #loginButton.Enabled {
+body.Blue .login-button {
     background-color: white;
     border-color: white;
     color: #0099cc;
@@ -399,15 +404,33 @@ body.Blue #loginButton.Enabled {
 .Message {
     color: white;
     padding: 10px;
-    margin: 0 2px 20px;
+    //margin: 0 2px 20px;
     font-size: 1.5em;
 }
 
 .SuccessMessage {
     background: rgba(60,205,60, .5);
     border: 2px solid rgba(26, 134, 26, 1);
+
+    float: left;
+    position: relative;
+    left: -10px;
+    opacity: 0;
+    transition: all 0.3s ease 0s;
 }
 
+  .SuccessMessage.is-active {
+    opacity: 1;
+    left: 20px;
+  }
+/* Styles for elements besides the active message itself (these elements respecte the active-message state) */
+.active-message {
+  opacity: .2;
+  transition: .2s all;
+}
+.dimmed.active-message {
+  opacity: .95;
+}
 
 /*#region --- Textbox Watermark/Placeholderm text --- */
 

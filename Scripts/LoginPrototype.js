@@ -8,7 +8,7 @@ $(document).ready(function (e) {
     var $previousAuxInfoItem;
 
     //$(document).on("click", "#mainWrapper", function (e) {
-    //    // --- Only handle clicks that were on the wrapper itself - not on child elements        
+    //    // --- Only handle clicks that were on the wrapper itself - not on child elements
     //    var wasClickOnTheWrapper = !($(e.target).is('#mainWrapper *'));
     //    if (wasClickOnTheWrapper) {
     //        $('body').toggleClass('Light');
@@ -21,15 +21,15 @@ $(document).ready(function (e) {
 
         /* Purpose: (1) If user clicked on an aux info button that is different than the currently-shown one,
          *              hide the current one, show the new one, and make the clicked button appear "selected".
-         *          (2) If the user clicked on the same aux info button as the currently-shown one, hide all.        
+         *          (2) If the user clicked on the same aux info button as the currently-shown one, hide all.
          */
         var $selectedElement = $(e.target);
         // Get the parent LI in case a child element is the e.target. (for some reason child elements are also being targetted)
         var $selectedLI = $selectedElement.closest('li');
-        
+
         // Make the current on the previous one
         $previousAuxInfoItem = $currentAuxInfoItem;
-        // Make the new one the "current" one        
+        // Make the new one the "current" one
         $currentAuxInfoItem = $('#' + $selectedLI.data('auxInfoId'));
 
         // First hide all
@@ -66,7 +66,7 @@ $(document).ready(function (e) {
 
     // Color scheme switching
     $(document).on('click', '#colorSchemeButtons span', function (e) {
-        
+
         var $selectedButton = $(e.target);
         var newColorSchemeId = $selectedButton.data('colorSchemeId');
 
@@ -78,7 +78,7 @@ $(document).ready(function (e) {
             // Make the previously-selected button become unselected and the new one become selected
             $('#colorSchemeButtons .Selected').removeClass('Selected');
             $selectedButton.addClass('Selected');
-        }        
+        }
     });
 
     // Open/Close the Options Menu
@@ -89,10 +89,10 @@ $(document).ready(function (e) {
 
     // Enlarge/Shrink the logo (demonstrate SVG scaling)
     $(document).on("click", ".Logo", function (e) {
-        
+
         $('.Logo').toggleClass('LogoSizeBig');
         e.stopPropagation();
-        
+
     });
     // Enable/Disable Login button based on what has been typed in username/password fields
     $(document).on("keyup", "input", function (e) {
@@ -103,22 +103,33 @@ $(document).ready(function (e) {
         var password = $('#PasswordInput').val();
 
         if (validateEmail(userName) && password.length > 5)
-            isUserNameAndPasswordValid = true;      
-        
-        $('#loginButton').toggleClass('Enabled', isUserNameAndPasswordValid);
-        
+            isUserNameAndPasswordValid = true;
+
+        $('.login-button').toggleClass('disabled', !isUserNameAndPasswordValid);
+
     });
 
 
-    function validateEmail(email) { 
+    function validateEmail(email) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
-    } 
+    }
 
 
-    $(document).on('click', '#loginButton', function (e) {
+    $(document).on('click', '.login-button:not(.disabled)', function (e) {
         //location.reload();
-        
+        var itemsToDim = ['#formAndInfoWrapper form *:not(.Message)',
+                          '.Logo',
+                          '.dimmed',
+                          '#auxInfo'].join()
+
+        $('.SuccessMessage').addClass('is-active');
+        $(itemsToDim).addClass('active-message');
+
+        setTimeout(function() {
+          $('.SuccessMessage').removeClass('is-active');
+          $(itemsToDim).removeClass('active-message');
+        }, 3500);
     });
 
 
@@ -127,7 +138,7 @@ $(document).ready(function (e) {
 
 
     /*
-     * Replace all SVG images (img tags with svg sources) with inline SVG so we can easily style pieces of the 
+     * Replace all SVG images (img tags with svg sources) with inline SVG so we can easily style pieces of the
      * SVG using CSS.  See: http://stackoverflow.com/questions/11978995/how-to-change-color-of-svg-image-using-css-jquery-svg-image-replacement
      */
     /*

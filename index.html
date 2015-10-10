@@ -7,6 +7,12 @@
 </head>
 <body class="Dark">
 
+    <!-- <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <!-- Checkmark
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    </svg> -->
+
     <video id="bgvid" autoplay="autoplay" loop="loop"> <!-- poster="images/ConferenceTable.jpg" -->
         <!--<source src="polina.webm" type="video/webm">-->
         <source src="images/C5_Innovator_cutup2-comp15fps2.mp4" type="video/mp4" />
@@ -34,9 +40,13 @@
 
                 <input id="PasswordInput" placeholder="Pin + RSA Code" name="PasswordInput" type="text" />
 
-                <span id="loginButton" class="Button">
+                <span class="Button login-button disabled">
                     Log In
                 </span>
+
+                <div class="SuccessMessage Message">
+                    Yep, you're in!
+                </div>
 
                 <ul id="auxInfoButtons">
                     <li data-aux-info-id="help">
@@ -52,12 +62,6 @@
                         <img class="Button svg BlueBGScheme" src="images/Shield-light.svg" />
                     </li>
                 </ul>
-
-
-                <div class="SuccessMessage Message" style="display:none;">
-                    Yep, you're in!
-                </div>
-
             </form>
 
             <div id="auxInfo">
@@ -126,6 +130,7 @@
                 </div>
 
             </div>
+
         </div>
     </div>
 
