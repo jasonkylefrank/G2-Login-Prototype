@@ -6,12 +6,14 @@
     <link rel="stylesheet" href="Styles/LoginPrototype.css" type="text/css" />
 </head>
 <body class="Dark">
-
-    <!-- <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <!-- Checkmark
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-    </svg> -->
+    <!-- SVG definitions to use in the page. See: https://css-tricks.com/svg-symbol-good-choice-icons/
+    -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="icon-check" viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      </symbol>
+    </svg>
 
     <video id="bgvid" autoplay="autoplay" loop="loop"> <!-- poster="images/ConferenceTable.jpg" -->
         <!--<source src="polina.webm" type="video/webm">-->
@@ -45,7 +47,8 @@
                 </span>
 
                 <div class="SuccessMessage Message">
-                    Yep, you're in!
+                    <svg class="icon-check"><use xlink:href="#icon-check" /></svg>
+                    <span>Yep, you're in!</span>
                 </div>
 
                 <ul id="auxInfoButtons">

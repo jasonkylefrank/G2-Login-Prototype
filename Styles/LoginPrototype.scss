@@ -222,7 +222,7 @@ body.Blue #mainWrapper {
 }
 /*#endregion --- Options Menu --- */
 
-/*#region --- Logos --- */
+/*#region --- Logos and Icons --- */
 .Logo
 {
     transition: all .3s;
@@ -247,6 +247,13 @@ body.Blue #mainWrapper {
 
 .OldLogo.LogoSizeBig {
     height: 368px;
+}
+
+.icon-check {
+    fill: white;
+    width: 32px;
+    height: 32px;
+    vertical-align: bottom;
 }
 /*#endregion --- end Logos --- */
 
@@ -403,7 +410,8 @@ body.Blue .login-button {
 
 .Message {
     color: white;
-    padding: 10px;
+    //padding: 10px;
+    padding: 8px 12px 8px 7px;
     //margin: 0 2px 20px;
     font-size: 1.5em;
 }

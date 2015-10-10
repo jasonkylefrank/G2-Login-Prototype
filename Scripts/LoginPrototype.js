@@ -117,8 +117,8 @@ $(document).ready(function (e) {
 
 
     $(document).on('click', '.login-button:not(.disabled)', function (e) {
-        //location.reload();
-        var itemsToDim = ['#formAndInfoWrapper form *:not(.Message)',
+
+        var itemsToDim = ['#formAndInfoWrapper form *:not(.Message, .Message *)',
                           '.Logo',
                           '.dimmed',
                           '#auxInfo'].join()

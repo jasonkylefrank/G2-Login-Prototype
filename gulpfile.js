@@ -25,7 +25,6 @@ config.js = {
     src: [config.srcRoot + '/Scripts/**/*.js'],
     dest: config.destRoot + '/Scripts'
 };
-console.log(config);
 
 /**
  * Wait for sass task, then launch the Server
@@ -60,7 +59,7 @@ gulp.task('sass', function () {
 gulp.task('js', function() {
   return gulp.src(config.js.src)
     .pipe(gulp.dest(config.js.dest))
-    .pipe(browserSync.reload({stream:true})); // TODO: test this... with stream-injection, it might screw up state...
+    .pipe(browserSync.reload({stream:true})); // The "stream" part is not working (it just reloads the page). Not sure it's a good idea to inject it anyway.
 });
 
 /**
