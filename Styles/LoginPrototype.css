@@ -1,676 +1,535 @@
-﻿
-
 body {
-    font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;    
-    overflow-x: hidden;
-}
+  font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+  overflow-x: hidden; }
 
 /*#region --- Show/Hide different img elements based on Color Scheme ---*/
-body.Blue img:not(.MenuButton) { /* for some reason I couldn't add ":not(#uiOptions img)" here as well, so I added it below */
-    display: none;
-}
+body.Blue img:not(.MenuButton) {
+  /* for some reason I couldn't add ":not(#uiOptions img)" here as well, so I added it below */
+  display: none; }
 
 body.Dark img, body.Light img, body.Blue #uiOptions img {
-    display: inline-block;
-}
+  display: inline-block; }
 
-body.Dark  img.BlueBGScheme, 
+body.Dark img.BlueBGScheme,
 body.Light img.BlueBGScheme {
-    display: none;
-}
+  display: none; }
+
 body.Blue img.BlueBGScheme {
-    display: inline-block;
-}
+  display: inline-block; }
+
 /*#endregion --- end Show/Hide different img elements based on Color Scheme ---*/
-
-
 /* Video BG Helpful info: http://demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video  */
-video#bgvid
-{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    background-size: cover;
-    /*background: url(polina.jpg) no-repeat;*/
-    z-index: -100;
-    opacity: 0.0;
-    /*position: absolute;
+video#bgvid {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background-size: cover;
+  /*background: url(polina.jpg) no-repeat;*/
+  z-index: -100;
+  opacity: 0.0;
+  /*position: absolute;
     left: 0;
     top: 0;
     width: 101%;
     height: 100%;*/
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    /* This is not working...
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+  /* This is not working...
     -moz-transform-origin: 50% 50%;
     -ms-transform-origin: 50% 50%;
     -o-transform-origin: 50% 50%;
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
     */
-    -moz-transition: opacity 3.0s;
-    -o-transition: opacity 3.0s;
-    -webkit-transition: opacity 3.0s;
-    transition: opacity 3.0s;
-}
+  -webkit-transition: opacity 3s;
+  transition: opacity 3s; }
 
 body.Loaded video#bgvid {
-    opacity: 1.0;
-}
+  opacity: 1.0; }
 
 /* Dealing With Mobile */
 /*@media screen and (max-device-width: 800px) {
     html { background: url(../images/ConferenceTable.jpg) #000 no-repeat center center fixed; }
     #bgvid { display: none; }
 }*/
+.Button {
+  cursor: pointer;
+  display: inline-block; }
 
-.Button
-{
-    cursor: pointer;
-    display: inline-block;
-}
+.Button:hover {
+  opacity: 1.0; }
 
-.Button:hover
-{
-    opacity: 1.0;
-}
-
-#mainWrapper {    
-    display: inline-block;
-    padding-right: 18px;
-    float: left;
-    width: 450px; /* explicit width to keep aux info paragraphs from widening this container */
-
-    position: relative;
-    top: -25px;
-    opacity: 0.0;    
-    
-    -moz-transition: all 1.0s;
-    -o-transition: all 1.0s;
-    -webkit-transition: all 1.0s;
-    transition: all 1.0s;
-}
+#mainWrapper {
+  display: inline-block;
+  padding-right: 18px;
+  float: left;
+  width: 450px;
+  /* explicit width to keep aux info paragraphs from widening this container */
+  position: relative;
+  top: -25px;
+  opacity: 0.0;
+  -webkit-transition: all 1s;
+          transition: all 1s; }
 
 body.Loaded #mainWrapper {
-    top: 0px;     
-    opacity: 1.0;    
-}
+  top: 0px;
+  opacity: 1.0; }
 
 body.Dark #mainWrapper {
-    background: rgba(0,0,0, .2);
-}
+  background: rgba(0, 0, 0, 0.2); }
 
 body.Light #mainWrapper {
-    background: rgba(255,255,255, .2);
-}
+  background: rgba(255, 255, 255, 0.2); }
 
 body.Blue #mainWrapper {
-    background: rgba(0,191,255, .4);
-    /*background: #00bfff;*/
-}
+  background: rgba(0, 191, 255, 0.4);
+  /*background: #00bfff;*/ }
 
 #formAndInfoWrapper {
-    margin-left: 15px;
-}
+  margin-left: 15px; }
 
 /*#region --- Options Menu --- */
-.MenuButton
-{
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 20px;
-    margin-right: 20px;
-    height: 30px;
-
-    -moz-transition: all .3s;
-    -o-transition: all .3s;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-}
+.MenuButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 20px;
+  margin-right: 20px;
+  height: 30px;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
 
 .MenuButton.MenuShown {
-    right: 195px; /*  */
-}
+  right: 195px; }
 
-#uiOptions
-{
-    /*
-    float: right;
-    opacity: .6;
-    */
-    opacity: .6;
-    position: absolute;
-    width: 195px;
-    right: -195px;
-    
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-
-    top: 0;
-    min-height: 100%;
-    padding-left: 15px;
-    background-color: rgba(0,0,0,.6);
-    font-size: .9rem;
-
-    color: #dfdfdf;
-    -moz-transition: all .3s;
-    -o-transition: all .3s;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-}
+#uiOptions {
+  opacity: .6;
+  position: absolute;
+  width: 195px;
+  right: -195px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  top: 0;
+  min-height: 100%;
+  padding-left: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: .9rem;
+  color: #dfdfdf;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
 
 #uiOptions:hover {
-    opacity: 1.0;
-}
+  opacity: 1.0; }
 
-
-#uiOptions.Shown
-{
-    right: 0px;
-}
+#uiOptions.Shown {
+  right: 0px; }
 
 #uiOptions h4 {
-    /*text-align: center;*/ 
-    font-size: 1.1rem;    
-    text-transform: uppercase;
-}
+  /*text-align: center;*/
+  font-size: 1.1rem;
+  text-transform: uppercase; }
 
 #uiOptionsHeaderBlock {
-    margin-top: 18px;
-}
+  margin-top: 18px; }
 
 #uiOptionsHeaderBlock h4 {
-    float: left;
-    margin-top: 0;
-}
+  float: left;
+  margin-top: 0; }
 
 #closeUIOptionsButton {
-    float: right;
-    margin-right: 20px;
-}
+  float: right;
+  margin-right: 20px; }
 
 #closeUIOptionsButton img {
-    height: 16px;
-}
+  height: 16px; }
 
 #uiOptions ul {
-    padding-left: 0; /* needed to override browser-defined padding */
-    /*text-align: center;*/  /* Horizontally center the ul */
-    clear: both;
-}
+  padding-left: 0;
+  /* needed to override browser-defined padding */
+  /*text-align: center;*/
+  /* Horizontally center the ul */
+  clear: both; }
 
 #uiOptions li {
-    list-style-type: none;
-    margin-bottom: 25px;
-}
+  list-style-type: none;
+  margin-bottom: 25px; }
 
 .uiOptionLabel {
-    display: block;
-    margin-bottom: 3px;    
-}
+  display: block;
+  margin-bottom: 3px; }
 
-.RadioButtonToggleSet span
-{
-    display: inline-block;
-    padding: 3px 11px;
-    border: 1px solid #0099cc;
-    opacity: .6;
-}
+.RadioButtonToggleSet span {
+  display: inline-block;
+  padding: 3px 11px;
+  border: 1px solid #0099cc;
+  opacity: .6; }
 
-.RadioButtonToggleSet span:not(.Selected):hover {    
-    opacity: 1.0;
-    background-color: rgba(57,205,255, .6);
-}
+.RadioButtonToggleSet span:not(.Selected):hover {
+  opacity: 1.0;
+  background-color: rgba(57, 205, 255, 0.6); }
 
 .RadioButtonToggleSet .Selected {
-    background-color: rgba(57,205,255, .3);
-    opacity: 1.0;
-}
+  background-color: rgba(57, 205, 255, 0.3);
+  opacity: 1.0; }
+
 /*#endregion --- Options Menu --- */
-
 /*#region --- Logos --- */
-.Logo
-{
-    -moz-transition: all .3s;
-    -o-transition: all .3s;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-
-    height: 140px;
-    margin-top: 15px;
-    margin-left: 3px;
-}
+.Logo {
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+  height: 140px;
+  margin-top: 15px;
+  margin-left: 3px; }
 
 .OldLogo {
-    margin-left: 14px;
-}
-
-#newLogo {
-    /*display: none;*/
-}
+  margin-left: 14px; }
 
 .NewLogo.LogoSizeBig {
-    margin-left: -6px;
-    height: 303px;
-}
+  margin-left: -6px;
+  height: 303px; }
 
-.OldLogo.LogoSizeBig {    
-    height: 368px;
-}
+.OldLogo.LogoSizeBig {
+  height: 368px; }
+
 /*#endregion --- end Logos --- */
-
 /*#region --- "Dimmed" elements --- */
-.dimmed
-{
-    -moz-transition: all .4s;
-    -o-transition: all .4s;
-    -webkit-transition: all .4s;
-    transition: all .4s;
-
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    
-    /* Normally I think the opacity would probably be applied with JavaScript, so we could show a bright
+.dimmed {
+  -webkit-transition: all 0.4s;
+          transition: all 0.4s;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* Normally I think the opacity would probably be applied with JavaScript, so we could show a bright
        background before the video or images take over the BG. */
-    opacity: 0.65;
-}
+  opacity: 0.65; }
 
 body.Dark .dimmed, body.Blue .dimmed {
-    background: #000;
-}
+  background: #000; }
 
 body.Light .dimmed {
-    background: #fff;
-}
+  background: #fff; }
+
 /*
 body.Blue .dimmed {
     background: #0099cc;
 }
 */
-
 #DimmedBG {
-    z-index: -50;
-    position: fixed;
-}
-/*#endregion --- end "Dimmed" elements --- */
+  z-index: -50;
+  position: fixed; }
 
+/*#endregion --- end "Dimmed" elements --- */
 form {
-    margin-top: 20px;
-}
+  margin-top: 20px; }
 
 form:after {
-    /* Clearfix trick to keep floated elements from spilling out of this container.
+  /* Clearfix trick to keep floated elements from spilling out of this container.
        See: http://stackoverflow.com/a/11597829/718325 */
-    content: " ";
-    display: block; 
-    height: 0; 
-    clear: both;
-}
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both; }
 
-input
-{
-    /*background-color: rgba(255,255,255,.3);*/
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-
-    width: 100%;
-    border-width: 1px;
-    border-color: rgba(255,255,255,.1);
-    background-color: rgba(0,155,204, .3);
-    /*background-color: #39cdff;*/
-    background-color: rgba(57,205,255, .3);
-    font-size: 2em;
-    display: block;
-    background-size: 1.0em;
-    background-repeat: no-repeat;
-    background-position-y: center;
-    padding-left: 42px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-    -moz-transition: all .3s;
-    -o-transition: all .3s;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-}
+input {
+  /*background-color: rgba(255,255,255,.3);*/
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 155, 204, 0.3);
+  /*background-color: #39cdff;*/
+  background-color: rgba(57, 205, 255, 0.3);
+  font-size: 2em;
+  display: block;
+  background-size: 1.0em;
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 42px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
 
 body.Dark input {
-    color: white;
-}
+  color: white; }
 
 body.Light input {
-    color:black;
-}
+  color: black; }
 
 body.Blue input {
-    color: white;
-    background-color: rgba(255,255,255, .3);
-}
+  color: white;
+  background-color: rgba(255, 255, 255, 0.3); }
 
 #UsernameInput {
-    background-image: url(../images/user1-blue.svg);
-}
+  background-image: url(../images/user1-blue.svg); }
+
 body.Blue #UsernameInput {
-    background-image: url(../images/user1-light.svg);
-}
+  background-image: url(../images/user1-light.svg); }
 
 #PasswordInput {
-    background-image: url(../images/lock-10-blue.svg);
-}
+  background-image: url(../images/lock-10-blue.svg); }
 
 body.Blue #PasswordInput {
-    background-image: url(../images/lock-10-light.svg);
-}
+  background-image: url(../images/lock-10-light.svg); }
 
-
-#loginButton
-{
-    display: inline-block;
-    padding: 5px 10px;
-    margin-top: 0px;
-    margin-bottom: 5px;
-    margin-right: 3px;
-    border: 2px solid #444; /* Disabled color */
-    /*background-color: #0099cc;*/
-    background-color: #666; /* Disabled appearance */
-    color: white;
-    font-size: 2em;
-    cursor: default;
-    position: relative;
-    float: left;
-    /*margin-top: -85px;*/
-    
-    opacity: .5;
-
-    -moz-transition: opacity .75s margin .75s, background-color .25s;
-    -o-transition: opacity .75s margin .75s, background-color .25s;
-    -webkit-transition: opacity .75s margin .75s, background-color .25s;
-    transition: opacity .75s, margin .75s, background-color .25s;
-}
+#loginButton {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  margin-right: 3px;
+  border: 2px solid #444;
+  /* Disabled color */
+  /*background-color: #0099cc;*/
+  background-color: #666;
+  /* Disabled appearance */
+  color: white;
+  font-size: 2em;
+  cursor: default;
+  position: relative;
+  float: left;
+  opacity: .5;
+  -webkit-transition: opacity 0.75s, margin 0.75s, background-color 0.25s;
+          transition: opacity 0.75s, margin 0.75s, background-color 0.25s; }
 
 #loginButton.Enabled {
-    opacity: 1.0;
-    background-color: #0099cc;
-    border-color: #0099cc;
-}
+  opacity: 1.0;
+  background-color: #0099cc;
+  border-color: #0099cc; }
 
 #loginButton.Enabled:hover {
-    background-color: transparent;
-    cursor: pointer;
-}
+  background-color: transparent;
+  cursor: pointer; }
 
-    #loginButton.Enabled:active
-    {
-        background-color: rgba(35, 193, 246, 0.5);
-        -moz-transition: all 0s;
-        -o-transition: all 0s;
-        -webkit-transition: all 0s;
-        transition: all 0s;
-    }
+#loginButton.Enabled:active {
+  background-color: rgba(35, 193, 246, 0.5);
+  -webkit-transition: all 0s;
+          transition: all 0s; }
 
 body.Blue #loginButton.Enabled {
-    background-color: white;
-    border-color: white;
-    color: #0099cc;
-}
-    
+  background-color: white;
+  border-color: white;
+  color: #0099cc; }
 
 .Message {
-    color: white;
-    padding: 10px;
-    margin: 0 2px 20px;
-    font-size: 1.5em;    
-}
+  color: white;
+  padding: 10px;
+  margin: 0 2px 20px;
+  font-size: 1.5em; }
 
 .SuccessMessage {
-    background: rgba(60,205,60, .5);
-    border: 2px solid rgba(26, 134, 26, 1);
-}
-
+  background: rgba(60, 205, 60, 0.5);
+  border: 2px solid #1a861a; }
 
 /*#region --- Textbox Watermark/Placeholderm text --- */
-
-/* Placeholder text when the input does not have focus*/
 ::-webkit-input-placeholder {
-   opacity: .7;
-}
+  opacity: .6;
+  -webkit-transition: .25s all;
+          transition: .25s all; }
 
-:-moz-placeholder { /* Firefox 18- */
-   opacity: .7;
-}
+:-moz-placeholder {
+  /* Firefox 18- */
+  opacity: .6;
+  transition: .25s all; }
 
-::-moz-placeholder {  /* Firefox 19+ */
-   opacity: .7;
-}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  opacity: .3; }
 
-:-ms-input-placeholder {  
-   opacity: .7;
-}
+:-ms-input-placeholder {
+  opacity: .6;
+  transition: .25s all; }
 
 /* Placeholder text color when using the DARK theme */
 .Dark::-webkit-input-placeholder {
-   color: #aaa;
-}
-.Dark:-moz-placeholder { /* Firefox 18- */
-   color: #aaa;
-}
-.Dark::-moz-placeholder {  /* Firefox 19+ */
-   color: #aaa;
-}
-.Dark:-ms-input-placeholder {  
-   color: #aaa;
-}
+  color: #aaa; }
+
+.Dark:-moz-placeholder {
+  /* Firefox 18- */
+  color: #aaa; }
+
+.Dark::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #aaa; }
+
+.Dark:-ms-input-placeholder {
+  color: #aaa; }
 
 /* Placeholder text color when using the LIGHT theme */
 .Light ::-webkit-input-placeholder {
-   color: #555;
-}
-.Light :-moz-placeholder { /* Firefox 18- */
-   color: #555;
-}
-.Light ::-moz-placeholder {  /* Firefox 19+ */
-   color: #555;
-}
-.Light :-ms-input-placeholder {  
-   color: #555;
-}
+  color: #555;
+  opacity: .6; }
+
+.Light :-moz-placeholder {
+  /* Firefox 18- */
+  color: #555;
+  opacity: .6; }
+
+.Light ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #555;
+  opacity: .6; }
+
+.Light :-ms-input-placeholder {
+  color: #555;
+  opacity: .6; }
 
 /* Placeholder text when the input has FOCUS */
 :focus::-webkit-input-placeholder {
-   opacity: .3;
-}
-:focus:-moz-placeholder { /* Firefox 18- */
-   opacity: .3;
-}
-:focus::-moz-placeholder {  /* Firefox 19+ */
-   opacity: .3;
-}
-:focus:-ms-input-placeholder {  
-   opacity: .3;
-}
-/*#endregion --- end Textbox Placeholder styles --- */
+  opacity: .3; }
 
+:focus:-moz-placeholder {
+  /* Firefox 18- */
+  opacity: .3; }
+
+:focus::-moz-placeholder {
+  /* Firefox 19+ */
+  opacity: .3;
+  opacity: .17; }
+
+:focus:-ms-input-placeholder {
+  opacity: .3; }
+
+/*#endregion --- end Textbox Placeholder styles --- */
 .optionSeparator {
-    width: 85%;
-    border-color: rgba(255,255,255,.3);
-    margin-left: 0;
-    margin-top: 45px;
-    opacity: 0;
-}
+  width: 85%;
+  border-color: rgba(255, 255, 255, 0.3);
+  margin-left: 0;
+  margin-top: 45px;
+  opacity: 0; }
 
 /*#region --- Auxillary Info elements --- */
 ul#auxInfoButtons {
-    padding: 0;
-    /*margin-top: 0;*/
-    margin-bottom: 0;
-    float: right;
-    color:white;
-}
+  padding: 0;
+  /*margin-top: 0;*/
+  margin-bottom: 0;
+  float: right;
+  color: white; }
 
-    ul#auxInfoButtons li
-    {
-        list-style-type: none;
-        display: inline-block;
-        padding: 3px;
-        cursor: pointer;
+ul#auxInfoButtons li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 3px;
+  cursor: pointer;
+  opacity: .6;
+  -webkit-transition: all 0.25s;
+          transition: all 0.25s; }
 
-        opacity: .6;
+ul#auxInfoButtons li:hover, ul#auxInfoButtons li.Selected {
+  opacity: 1.0; }
 
-        -moz-transition: all .25s;
-        -o-transition: all .25s;
-        -webkit-transition: all .25s;
-        transition: all .25s;
-    }
-
-        ul#auxInfoButtons li:hover, ul#auxInfoButtons li.Selected
-        {
-            opacity: 1.0;
-        }
-
-    ul#auxInfoButtons .Button {
-        height: 20px;
-        vertical-align: middle;
-    }
+ul#auxInfoButtons .Button {
+  height: 20px;
+  vertical-align: middle; }
 
 #auxInfo {
-    clear: both;
-    margin-top: 10px;
-    position: relative;
-    font-size: .85rem;
-}
+  clear: both;
+  margin-top: 10px;
+  position: relative;
+  font-size: .85rem; }
 
 body.Dark #auxInfo {
-    color: #bbb;
-}
+  color: #bbb; }
 
 body.Light #auxInfo {
-    color: #555;
-}
+  color: #555; }
 
 body.Blue #auxInfo {
-    color: #0099cc;
-}
+  color: #45A5C5; }
 
 a {
-    color: inherit;
-}
+  color: inherit; }
 
-.auxInfoItem
-{
-    position: absolute;
-    padding: 0 15px;
-    margin-bottom: 15px;
-    width: 100%;
-    
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-
-    border-top: 4px solid #0099cc;
-    background: transparent;
-    top: -15px;
-    left: 0;
-    height: 0;
-    opacity: 0;
-    -moz-transition: all .3s;
-    -o-transition: all .3s;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-}
+.auxInfoItem {
+  position: absolute;
+  padding: 0 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: 4px solid #0099cc;
+  background: transparent;
+  top: -15px;
+  left: 0;
+  height: 0;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
 
 body.Blue .auxInfoItem {
-    border-top-color: white;
-}
+  border-top-color: white; }
 
 .auxInfoItem.Selected {
-    opacity: 1.0;
-    top: 0;
-    height: auto;
-}
+  opacity: 1.0;
+  top: 0;
+  height: auto; }
 
 body.Dark .auxInfoItem.Selected, body.Blue .auxInfoItem.Selected {
-    background: rgba(0,0,0,.6);
-}
+  background: rgba(0, 0, 0, 0.6); }
 
 body.Light .auxInfoItem.Selected {
-    background: rgba(255,255,255,.6);
-}
-
+  background: rgba(255, 255, 255, 0.6); }
 
 /*#region --- "pointer" triangle --- */
 .auxInfoItem:before {
-    position: absolute;
-    content: "";
-    width: 0px;
-    height: 0px;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 15px solid #0099cc;    
-    
-    top: -15px;
-}
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #0099cc;
+  top: -15px; }
+
 body.Blue .auxInfoItem:before {
-    border-bottom-color: white;
-}
+  border-bottom-color: white; }
+
 /* Position the pointer triangle horizontally to point to the respective button */
-.auxInfoItem#security:before
-{
-    right: -1px;
-}
-.auxInfoItem#newUser:before
-{
-    right: 28px;
-}
-.auxInfoItem#help:before
-{
-    right: 59px;
-}
+.auxInfoItem#security:before {
+  right: -1px; }
+
+.auxInfoItem#newUser:before {
+  right: 28px; }
+
+.auxInfoItem#help:before {
+  right: 59px; }
+
 /*#endregion --- end Aux Info Item "pointer" triangle ---*/
-
 .auxInfoItem h2 {
-    float: left;
-} 
+  float: left; }
+
 .auxInfoItem .CloseAuxInfoButton {
-    float: right;   
-    margin-top: 18px;
-}
+  float: right;
+  margin-top: 18px; }
+
 .auxInfoItem .CloseAuxInfoButton .ButtonImage {
-    height: 15px;
-}
+  height: 15px; }
+
 .auxInfoItem .CloseAuxInfoButton + * {
-    clear: both;
-}
-
-
+  clear: both; }
 
 #auxInfo ul {
-    padding-left: 0; 
-}
+  padding-left: 0; }
 
 #auxInfo li {
-    list-style-type: none;
-    margin-bottom: 7px;
-}
+  list-style-type: none;
+  margin-bottom: 7px; }
+
 /*#endregion --- end Auxillary Info elements --- */
-
-
 .InlineImage {
-    height: 11px;
-}
+  height: 11px; }
 
 .SpacedLI {
-    margin-top: 15px;
-}
+  margin-top: 15px; }
