@@ -9,15 +9,15 @@ var prefix      = require('gulp-autoprefixer');
 var messages = {
 
   }
-  , srcStylesheets = '_sass'
+  , srcStylesheets = 'Styles'
+  , destCSS        = srcStylesheets
 ;
 
 
 /**
  * Wait for sass task, then launch the Server
  */
-//gulp.task('browser-sync', ['sass'], function() {
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', ['sass'], function() {
     browserSync({
         server: {
             //baseDir: '_site'
@@ -25,7 +25,7 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('browser-sync-reload', function() {
+gulp.task('bs-reload', function() {
   browserSync.reload();
 });
 
@@ -50,16 +50,28 @@ gulp.task('sass', function () {
 */
 
 /**
+ */
+gulp.task('sass', function () {
+    return gulp.src(srcStylesheets + '/*.scss')
+        .pipe(sass({
+            includePaths: ['scss'],
+            onError: browserSync.notify
+        }))
+        .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
+        .pipe(gulp.dest(destCSS))
+        .pipe(browserSync.reload({stream:true}));
+});
+
+/**
  * Watch scss files for changes & recompile
  * Watch html/md files, reload BrowserSync
  */
 gulp.task('watch', function () {
-    //gulp.watch([srcStylesheets + '/*.scss'], ['sass']);
-    gulp.watch(['index.html'], ['browser-sync-reload']);
+    gulp.watch([srcStylesheets + '/*.scss'], ['sass']);
+    gulp.watch(['index.html'], ['bs-reload']);
 });
 
 /**
- * Default task, running just `gulp` will compile the sass,
- * compile the jekyll site, launch BrowserSync & watch files.
+ * Default task
  */
 gulp.task('default', ['browser-sync', 'watch']);
