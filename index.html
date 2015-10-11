@@ -13,6 +13,14 @@
           <path d="M0 0h24v24H0z" fill="none"/>
           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
       </symbol>
+      <symbol id="icon-menu" viewBox="0 0 512 512">
+          <rect class='top-rect'
+                width="491.43588" height="110.70112" x="11.296746" y="18.889994" />
+          <rect class='middle-rect'
+                width="491.43588" height="110.70112" x="11.296746" y="201.12727" />
+          <rect class='bottom-rect'
+                width="491.43588" height="110.70112" x="11.296746" y="383.63574" />
+      </symbol>
     </svg>
 
     <video id="bgvid" autoplay="autoplay" loop="loop"> <!-- poster="images/ConferenceTable.jpg" -->
@@ -136,8 +144,12 @@
 
         </div>
     </div>
-
-    <img class="MenuButton Button svg" src="images/menu-blue.svg" />
+    <!-- For now (until jQuery 3 is released) we need to wrap the SVG in another element so we can
+          toggle classes on/off since the current jQuery version cannot do that directly on svg elements.  See: http://stackoverflow.com/a/29525743/718325
+    -->
+    <span class="MenuButton Button">
+      <svg class="icon-menu"><use xlink:href="#icon-menu" /></svg>
+    </span>
 
     <aside id="uiOptions">
         <div id="uiOptionsHeaderBlock">

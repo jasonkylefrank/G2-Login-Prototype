@@ -1,0 +1,5 @@
+
+@mixin size($width-or-height) {
+  width: $width-or-height;
+  height: $width-or-height;
+}
