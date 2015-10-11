@@ -126,6 +126,7 @@ $(document).ready(function (e) {
         $('.SuccessMessage').addClass('is-active');
         $(itemsToDim).addClass('active-message');
 
+        // TODO: Use rAF instead!
         setTimeout(function() {
           $('.SuccessMessage').removeClass('is-active');
           $(itemsToDim).removeClass('active-message');
