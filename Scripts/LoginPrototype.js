@@ -125,12 +125,15 @@ $(document).ready(function (e) {
 
         $('.SuccessMessage').addClass('is-active');
         $(itemsToDim).addClass('active-message');
-
-        // TODO: Use rAF instead!
-        setTimeout(function() {
-          $('.SuccessMessage').removeClass('is-active');
-          $(itemsToDim).removeClass('active-message');
-        }, 3500);
+        // Remove stuff after a delay
+        setTimeout(
+          function() {
+            requestAnimationFrame(function() {
+              $('.SuccessMessage').removeClass('is-active');
+              $(itemsToDim).removeClass('active-message');
+            });
+          },
+          3500);
     });
 
 
